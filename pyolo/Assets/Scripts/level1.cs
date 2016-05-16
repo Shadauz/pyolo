@@ -2,7 +2,7 @@
 using System.Collections;
 using UnityEngine.SceneManagement;
 
-public class level1 : MonoBehaviour
+public class Level1 : MonoBehaviour
 {
 
     void Start()

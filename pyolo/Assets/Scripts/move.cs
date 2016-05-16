@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class move : MonoBehaviour {
+public class Move : MonoBehaviour {
     [HideInInspector]
     public GameObject[] points;
     private int currentPoint = 0;
