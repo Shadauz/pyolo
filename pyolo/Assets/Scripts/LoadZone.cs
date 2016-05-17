@@ -3,7 +3,7 @@ using System.Collections;
 using UnityEngine.SceneManagement;
 
 public class LoadZone : MonoBehaviour {
-
+    public static int test;
     void Start() {
         GetComponent<Renderer>().material.color = Color.white;
     }

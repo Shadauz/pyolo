@@ -3,21 +3,42 @@ using System.Collections;
 public class Node : MonoBehaviour
 {
 
-    public bool walkable;
+    public int state;
     public Vector3 worldPosition;
     public float diameter;
-    void Start(bool _walkable, Vector3 _worldPosition)
+    public int gCost;
+    public int hCost, x, y;
+    public Sprite node;
+    public Sprite nodeS;
+    public SpriteRenderer spriteRenderer;
+    public int fCost
     {
-        walkable = _walkable;
-        worldPosition = _worldPosition;
-        GetComponent<Renderer>().material.color = Color.white;
+        get { return gCost + hCost; }
     }
-    void OnMouseEnter()
+    void Start()
     {
-        GetComponent<Renderer>().material.color = Color.green;
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        spriteRenderer.sprite = node;
+        state = 1;
     }
-    void OnMouseExit()
+    public void setProperty(int prop)
     {
-        GetComponent<Renderer>().material.color = Color.white;
+        if(prop!=-2&&prop!=-1)state = prop;
+        updateSprite();
+        if(prop==-1) spriteRenderer.sprite = nodeS;
+
     }
+    void updateSprite()
+    {
+        switch (state)
+        {
+            case 0:
+                spriteRenderer.sprite = null;
+                break;
+            case 1:
+                spriteRenderer.sprite = node;
+                break;
+        }
+    }
+   
 }
