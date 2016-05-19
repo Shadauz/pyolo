@@ -10,7 +10,7 @@ public class Node : MonoBehaviour
     public int hCost, x, y;
     public Sprite node;
     public Sprite nodeS;
-    public SpriteRenderer spriteRenderer;
+    SpriteRenderer spriteRenderer;
     public int fCost
     {
         get { return gCost + hCost; }
@@ -25,7 +25,7 @@ public class Node : MonoBehaviour
     {
         if(prop!=-2&&prop!=-1)state = prop;
         updateSprite();
-        if(prop==-1) spriteRenderer.sprite = nodeS;
+        if(prop==-1&&state!=0)spriteRenderer.sprite = nodeS;
 
     }
     void updateSprite()

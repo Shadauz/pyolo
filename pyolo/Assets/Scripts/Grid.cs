@@ -8,8 +8,9 @@ public class Grid : MonoBehaviour {
     public GameObject nodeprefab;
     public GameObject dGrid;
     public Vector2 gridWorldSize;
-    int gridSizeX, gridSizeY, selectedY, selectedX, currentY, currentX,selectSize;
-    GameObject selected;
+    int gridSizeX, gridSizeY, selectedY, selectedX, currentY, currentX;
+    public int selectSize;
+    List<GameObject> selected;
     void Start()
     {
         gridSizeX = 107;
@@ -17,8 +18,8 @@ public class Grid : MonoBehaviour {
         selectedY = 0;
         selectedX = 0;
         CreateGrid();
-        selectSize=1;
-        selected = grid[selectedX, selectedY];
+        selected = new List<GameObject>();
+        selected =getAround(grid[selectedX, selectedY], selectSize);
     }
 
     private void CreateGrid()
@@ -39,20 +40,20 @@ public class Grid : MonoBehaviour {
     }
     void Update()
     {
-
+        if (Input.GetAxis("Mouse ScrollWheel") < 0&& selectSize!=1) selectSize--;
+        else if (Input.GetAxis("Mouse ScrollWheel") > 0) selectSize++;
         currentX = Mathf.RoundToInt(Input.mousePosition.x / 18);
         currentY = Mathf.RoundToInt(Input.mousePosition.y / 18);
-        if (currentX != selectedX || currentY != selectedY) {
-            List<GameObject> around = getAround(selected, selectSize);
-            foreach (var n in around){ n.GetComponent<Node>().setProperty(-2); }
+        if (currentX != selectedX || currentY != selectedY || Input.GetAxis("Mouse ScrollWheel") != 0) {
+            foreach (var n in selected){ n.GetComponent<Node>().setProperty(-2); }
             selectedX = currentX;
             selectedY = currentY;
-            selected = grid[selectedX, selectedY];
-            around= getAround(selected, selectSize);
-            Node prov = selected.GetComponent<Node>();
-            if (Input.GetMouseButton(0)) prov.setProperty(0);
-            else if (Input.GetMouseButton(1)) prov.setProperty(1);
-            else foreach (var n in around) { n.GetComponent<Node>().setProperty(-1); };
+            selected = getAround(grid[selectedX, selectedY], selectSize);
+            
+            foreach (var n in selected) {
+                if (Input.GetMouseButton(0)) n.GetComponent<Node>().setProperty(0);
+                else if (Input.GetMouseButton(1)) n.GetComponent<Node>().setProperty(1);
+                else n.GetComponent<Node>().setProperty(-1); }
         }
     }
 
@@ -68,8 +69,12 @@ public class Grid : MonoBehaviour {
         {
             for (int y = -size / 2; y < size - (size / 2); y++)
             {
-                GameObject current = grid[center.GetComponent<Node>().x + x, center.GetComponent<Node>().y + y];
-                if (current.GetComponent<Node>().state == 1) around.Add(current);
+                if (center.GetComponent<Node>().x + x<gridSizeX&&
+                    center.GetComponent<Node>().x + x > -1 &&
+                    center.GetComponent<Node>().y + y < gridSizeY &&
+                    center.GetComponent<Node>().y + y > -1
+                    ) { GameObject current = grid[center.GetComponent<Node>().x + x, center.GetComponent<Node>().y + y];
+                    around.Add(current); }
             }
         }
         return around;
