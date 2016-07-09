@@ -13,8 +13,8 @@ public class Grid : MonoBehaviour {
     List<GameObject> selected;
     void Start()
     {
-        gridSizeX = 107;
-        gridSizeY = 60;
+        gridSizeX = 133;
+        gridSizeY = 64;
         selectedY = 0;
         selectedX = 0;
         CreateGrid();
@@ -30,7 +30,7 @@ public class Grid : MonoBehaviour {
         {
             for (int y = 0; y < gridSizeY; y++)
             {
-                Vector3 worldPoint = worldBottomLeft + Vector3.right * x * 0.375f + Vector3.up * y * 0.375f;
+                Vector3 worldPoint = worldBottomLeft + Vector3.right * x * 0.5f + Vector3.up * y * 0.5f;
                 grid[x, y] = Instantiate(nodeprefab, worldPoint, Quaternion.identity) as GameObject;
                 grid[x, y].transform.parent = dGrid.transform;
                 grid[x, y].GetComponent<Node>().x = x;

@@ -1,7 +1,7 @@
-Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2008
-
-Project("{66A586F6-F1F7-6FCE-0087-50B6D44B0395}") = "pyolo", "Assembly-CSharp.csproj", "{F9C42D8E-E31A-078E-62A0-8A8ED7F2D8D4}"
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2015
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "pyolo.CSharp", "pyolo.CSharp.csproj", "{52AD6969-B033-02D3-EF85-FE3002DB84B6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -9,15 +9,12 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{F9C42D8E-E31A-078E-62A0-8A8ED7F2D8D4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F9C42D8E-E31A-078E-62A0-8A8ED7F2D8D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F9C42D8E-E31A-078E-62A0-8A8ED7F2D8D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F9C42D8E-E31A-078E-62A0-8A8ED7F2D8D4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{52AD6969-B033-02D3-EF85-FE3002DB84B6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{52AD6969-B033-02D3-EF85-FE3002DB84B6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{52AD6969-B033-02D3-EF85-FE3002DB84B6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{52AD6969-B033-02D3-EF85-FE3002DB84B6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(MonoDevelopProperties) = preSolution
-		StartupItem = Assembly-CSharp.csproj
 	EndGlobalSection
 EndGlobal
